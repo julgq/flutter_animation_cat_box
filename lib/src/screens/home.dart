@@ -23,9 +23,11 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       vsync: this,
     );
 
-    catAnimation = Tween(begin: 0.0, end: 100.0)
+    catAnimation = Tween(begin: 0.0, end: 200.0)
         .animate(CurvedAnimation(parent: catController, curve: Curves.easeIn));
+  }
 
+  onTap() {
     catController.forward();
   }
 
@@ -36,7 +38,10 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       appBar: AppBar(
         title: Text('Animation'),
       ),
-      body: buildAnimation(),
+      body: GestureDetector(
+        child: buildAnimation(),
+        onTap: onTap,
+      ), // GestureDector, si se genera un Tap en la pantalla inicia la animación
     );
   }
 
